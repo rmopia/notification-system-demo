@@ -21,9 +21,10 @@ namespace NotificationSystemDemo.Controllers
         [HttpPost("sms")]
         public IActionResult SendAndStoreSMS([FromBody] SmsModel smsModel)
         {
+            // TODO: return response from function
             notificationService.SendAndStoreSMS(smsModel);
 
-            // TODO: return responses based on SendAndStoreSMS outcome i.e. 200, 400, etc.
+            // TODO: return status codes based on response above i.e. 200, 400, etc.
             return Ok();
         }
 
@@ -31,9 +32,10 @@ namespace NotificationSystemDemo.Controllers
         [HttpPost("email")]
         public IActionResult SendAndStoreEmails([FromBody] EmailModel emailModel)
         {
+            // TODO: return response from function
             notificationService.SendAndStoreEmail(emailModel);
 
-            // TODO: return responses based on SendAndStoreEmail outcome i.e. 200, 400, etc.
+            // TODO: return status codes based on response above i.e. 200, 400, etc.
             return Ok();
         }
     }

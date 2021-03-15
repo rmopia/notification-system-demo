@@ -12,7 +12,7 @@ namespace NotificationSystemDemo.Services
     {
         public void SendAndStoreSMS(SmsModel smsModel)
         {
-            // TODO: store in database in appropriate table, if required
+            // TODO: store SMS in database, if required
             // TODO: functionality for scheduled SMS events
 
             var twilioAccountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
@@ -31,9 +31,9 @@ namespace NotificationSystemDemo.Services
             // TODO: return message response to contoller
         }
 
-        public void SendAndStoreEmail(EmailModel emailModel)
+        public async void SendAndStoreEmail(EmailModel emailModel)
         {
-            // TODO: store in database in appropriate table, if required
+            // TODO: store email in database, if required
             // TODO: functionality for scheduled email events
 
             var sendGridApiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
@@ -46,7 +46,7 @@ namespace NotificationSystemDemo.Services
             var htmlContent = emailModel.HtmlTextContent;
 
             var outgoingEmail = MailHelper.CreateSingleEmail(fromAddr, toAddr, subject, plainTextContent, htmlContent);
-            var response = sendGridClient.SendEmailAsync(outgoingEmail).ConfigureAwait(false);
+            var response = await sendGridClient.SendEmailAsync(outgoingEmail).ConfigureAwait(false);
 
             Console.WriteLine(response);
 
